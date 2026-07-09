@@ -53,11 +53,11 @@
         fi
         sync-updates-to-system
         if [ "$1" = "switch" ]; then
-          echo $'\033[1;34m'"info:"$'\033[0m'" pushing updates to active session"
-          home-manager switch
           echo $'\033[1;33m'"warn:"$'\033[0m'" pushing updates to active system, "$'\033[1m'"sudo"$'\033[0m'" required, commands follow"
           echo "  "$'\033[1m'"sudo"$'\033[0m'" nixos-rebuild switch"
           sudo nixos-rebuild switch
+          echo $'\033[1;34m'"info:"$'\033[0m'" pushing updates to active session"
+          home-manager switch
         else
           echo $'\033[1;33m'"warn:"$'\033[0m'" staging updates to next boot, "$'\033[1m'"sudo"$'\033[0m'" required, commands follow"
           echo "  "$'\033[1m'"sudo"$'\033[0m'" nixos-rebuild boot"
