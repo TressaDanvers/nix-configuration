@@ -6,10 +6,7 @@ in {
     arch = lib.mkOption { type = lib.types.enum [ "x86_64-linux" ]; };
     name = lib.mkOption { type = lib.types.nonEmptyStr; };
 
-    session = lib.mkOption {
-      type = lib.types.nullOr lib.types.enum [ "gnome" ];
-      default = null;
-    };
+    session = lib.mkOption { type = lib.types.nullOr lib.types.enum [ "gnome" "kde-plasma" ]; };
 
     locale = lib.mkOption { type = lib.types.nonEmptyStr; };
     timeZone = lib.mkOption { type = lib.types.nonEmptyStr; };

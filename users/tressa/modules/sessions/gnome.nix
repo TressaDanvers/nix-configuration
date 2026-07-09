@@ -2,7 +2,6 @@
   config = lib.optionalAttrs (host.session == "gnome") {
     home = {
       packages = with pkgs; with gnomeExtensions; [
-        librewolf
         nautilus
         rounded-window-corners-reborn
       ];
