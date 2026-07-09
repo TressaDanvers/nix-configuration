@@ -12,6 +12,8 @@
         fi
       '';
 
+    systemd.services."systemd-machine-id-commit".enable = false;
+
     users.mutableUsers = false;
 
     preservation = {
