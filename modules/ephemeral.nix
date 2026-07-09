@@ -29,7 +29,9 @@
           { file = "/etc/machine-id"; inInitrd = true; }
         ];
 
-        users = lib.genAttrs (host.users) (_: {
+        users = lib.genAttrs (host.users) (path: let
+          user = (import ../users/${path} inputs).user;
+        in {
           commonMountOptions = [
             "x-gvfs-hide"
             "x-gdu.hide"
@@ -37,7 +39,6 @@
 
           directories = [
             ".config/home-manager"
-            ".var"
             "Desktop"
             "Documents"
             "Downloads"
@@ -47,11 +48,11 @@
             "Projects"
             "Templates"
             "Videos"
-          ];
+          ] ++ user.state.directories;
 
           files = [
             { file = ".config/sops/age/keys.txt"; mode = "0600"; }
-          ];
+          ] ++ user.state.files;
         });
       };
     };
