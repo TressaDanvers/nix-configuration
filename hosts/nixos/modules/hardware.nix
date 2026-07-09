@@ -14,5 +14,22 @@
     extraModulePackages = [ ];
   };
 
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware = {
+    cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+
+      settings = {
+        General = {
+          ControllerMode = "bredr";
+          Experimental = true;
+          FastConnectable = true;
+        };
+
+        Policy.AutoEnable = true;
+      };
+    };
+  };
 }
