@@ -40,6 +40,7 @@
           ];
 
           directories = [
+            ".var/wine"
             ".config/home-manager"
             "Desktop"
             "Documents"

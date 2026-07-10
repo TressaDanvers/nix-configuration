@@ -4,7 +4,13 @@
     desc = "Tressa Danvers";
     state = {
       files = [];
-      directories = [ ".config/discord" ".config/librewolf" ".config/godot" ];
+      directories = [
+        ".config/discord"
+        ".config/librewolf"
+        ".config/godot"
+        ".local/share/umu"
+        ".local/opt"
+      ];
     };
   };
 }

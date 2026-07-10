@@ -8,6 +8,8 @@
     home-manager.url = "github:nix-community/home-manager";
     nixcord.url = "github:4evy/nixcord";
 
+    ge-proton-flake.url = "./packages/ge-proton-flake";
+
     disko.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";

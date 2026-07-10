@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: {
+{ inputs, lib, pkgs, ... }: {
   programs = {
     bash = {
       enable = true;
@@ -9,5 +9,12 @@
     };
   };
 
-  home.packages = with pkgs; [ fastfetch onefetch tree ];
+  home = {
+    packages = with pkgs; [
+      tree
+
+      fastfetch
+      onefetch
+    ];
+  };
 }

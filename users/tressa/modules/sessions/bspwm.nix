@@ -37,8 +37,8 @@
       ];
 
       monitors = {
-        DP-1 = [ "primary" "hidden" ];
-        HDMI-A-1 = [ "secondary" ];
+        DP-3 = [ "primary" "hidden" ];
+        HDMI-1 = [ "secondary" ];
       };
 
       settings = {
