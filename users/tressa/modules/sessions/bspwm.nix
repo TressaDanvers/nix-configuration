@@ -15,15 +15,21 @@
       vicinae = {
         enable = true;
         systemd.enable = true;
+        settings = {
+          launcher_window = {
+            opacity = 0.35;
+            client_side_decorations = {
+              rounding = 0;
+              border_width = 0;
+              shadow_size = 0;
+            };
+          };
+        };
       };
     };
 
     xsession.windowManager.bspwm = {
       enable = true;
-
-      rules = {
-        vicinae.border = false;
-      };
 
       startupPrograms = [
         "pgrep -x sxhkd || sxhkd"
@@ -59,7 +65,6 @@
         backend = "glx";
         extraConfig = ''
           transparent-clipping = true;
-          transparent-clipping-exclude = [ "class_g = 'vicinae'" ];
         '';
       };
 
