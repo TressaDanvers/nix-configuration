@@ -6,9 +6,9 @@ in {
     home.packages = with pkgs; [
       (writeShellScriptBin "screenshot" ''
         case "$1" in
-          select) dbus-launch flameshot gui ;;
-          full) dbus-launch flameshot screen -p ~/Pictures/Screenshots/Snips/ ;;
-          delayed) dbus-launch flameshot gui -n 2 ;;
+          select) flameshot gui ;;
+          full) flameshot screen -p ~/Pictures/Screenshots/Snips/ ;;
+          delayed) flameshot gui -n 2 ;;
         esac
       '')
       (pkgs.writeShellScriptBin "gamescope" ''
