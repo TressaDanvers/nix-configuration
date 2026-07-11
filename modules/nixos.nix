@@ -30,6 +30,8 @@ inputs@{ host, lib, pkgs, config, ... }: {
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   environment = {
     loginShellInit = ''
       if [ $UID == 0 ]; then
