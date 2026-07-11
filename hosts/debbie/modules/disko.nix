@@ -30,6 +30,13 @@
       fsType = "none";
       options = [ "bind" ];
     };
+
+    "/state/home/tressa/.local/share/VirtualBoxVMs" = {
+      depends = [ "/state" "/mnt/data" ];
+      device = "/mnt/data/home/tressa/.local/share/virtualbox";
+      fsType = "none";
+      options = [ "bind" ];
+    };
   };
 
   disko.devices.nodev = {
