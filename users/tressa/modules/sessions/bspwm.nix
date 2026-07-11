@@ -6,7 +6,7 @@ in {
       (writeShellScriptBin "screenshot" ''
         case "$1" in
           select) dbus-launch flameshot gui ;;
-          full) dbus-launch flameshot screen -c -p ~/Pictures/Screenshots/Snips/  ;;
+          full) dbus-launch flameshot screen -p ~/Pictures/Screenshots/Snips/ ;;
           delayed) dbus-launch flameshot gui -n 2 ;;
         esac
       '')

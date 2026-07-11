@@ -8,11 +8,11 @@
         ".local/opt"
 
         ".config/discord"
-        ".config/librewolf"
-        ".config/godot"
 
+        ".config/librewolf"
+
+        ".config/godot"
         ".local/share/godot"
-        ".local/share/umu"
       ];
     };
   };

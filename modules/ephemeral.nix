@@ -43,6 +43,7 @@
             ".var/wine"
             ".config/home-manager"
             ".local/share/Steam"
+            ".local/share/umu"
             "Desktop"
             "Documents"
             "Downloads"
