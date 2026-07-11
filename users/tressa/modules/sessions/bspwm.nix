@@ -1,4 +1,5 @@
-{ config, host, lib, pkgs, ... }: let
+{ inputs, config, host, lib, pkgs, ... }: let
+  ge-proton = inputs.ge-proton-flake.packages.${pkgs.stdenv.hostPlatform.system}.default;
   standard-opacity = 0.35; 
 in {
   config = lib.optionalAttrs (host.session == "bspwm") {
@@ -9,6 +10,11 @@ in {
           full) dbus-launch flameshot screen -p ~/Pictures/Screenshots/Snips/ ;;
           delayed) dbus-launch flameshot gui -n 2 ;;
         esac
+      '')
+      (pkgs.writeShellScriptBin "gamescope" ''
+        export WINEPREFIX='${config.home.homeDirectory}/.var/wine'
+        export PROTONPATH='${ge-proton}'
+        exec ${pkgs.gamescope}/bin/gamescope "$@"
       '')
       numlockx
     ];
