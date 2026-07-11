@@ -1,4 +1,6 @@
-{ config, host, lib, pkgs, ... }: {
+{ config, host, lib, pkgs, ... }: let
+  standard-opacity = 0.35; 
+in {
   config = lib.optionalAttrs (host.session == "bspwm") {
     home.packages = with pkgs; [ numlockx ];
 
@@ -6,7 +8,7 @@
       kitty = {
         enable = true;
         settings = {
-          background_opacity = 0.35;
+          background_opacity = standard-opacity;
         };
       };
 
@@ -17,7 +19,7 @@
         systemd.enable = true;
         settings = {
           launcher_window = {
-            opacity = 0.35;
+            opacity = standard-opacity * 2;
             client_side_decorations = {
               rounding = 0;
               border_width = 0;
