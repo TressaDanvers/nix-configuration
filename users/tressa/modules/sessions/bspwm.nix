@@ -62,7 +62,7 @@ in {
 
         extraConfig = ''
           numlockx on
-          feh --bg-scale ~/.config/home-manager/users/tressa/wallpaper-dark.jpg
+          feh --bg-scale --nofehbg ~/.config/home-manager/users/tressa/wallpaper-dark.jpg
         '';
       };
     };
