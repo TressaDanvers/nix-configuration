@@ -10,5 +10,5 @@ in lib.genAttrs' (host.users) (username: let
 in lib.nameValuePair "${user.name}@${host.name}" (home-manager.lib.homeManagerConfiguration {
   inherit pkgs;
   extraSpecialArgs = { inherit inputs; inherit host; inherit user; };    
-  modules = [ ../modules/userctl.nix ./modules ./${user.name} ./${user.name}/modules ];
+  modules = [ ./modules ./${user.name} ./${user.name}/modules ];
 }))) hosts

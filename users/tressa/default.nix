@@ -5,6 +5,8 @@
     state = {
       files = [];
       directories = [
+        ".cache/rbw"
+
         ".local/opt"
 
         ".config/discord"
