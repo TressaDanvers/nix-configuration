@@ -17,6 +17,13 @@
       options = [ "bind" ];
     };
 
+    "/srv" = {
+      depends = [ "/mnt/data" ];
+      device = "/mnt/data/srv";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+
     "/state/home/tressa/.local/share/Steam" = {
       depends = [ "/state" "/mnt/data" ];
       device = "/mnt/data/home/tressa/.local/opt/steam-home/.steam/debian-installation";
