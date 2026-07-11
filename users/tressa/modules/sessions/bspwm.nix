@@ -2,7 +2,16 @@
   standard-opacity = 0.35; 
 in {
   config = lib.optionalAttrs (host.session == "bspwm") {
-    home.packages = with pkgs; [ numlockx ];
+    home.packages = with pkgs; [
+      (writeShellScriptBin "screenshot" ''
+        case "$1" in
+          select) dbus-launch flameshot gui ;;
+          full) dbus-launch flameshot screen -c -p ~/Pictures/Screenshots/Snips/  ;;
+          delayed) dbus-launch flameshot gui -n 2 ;;
+        esac
+      '')
+      numlockx
+    ];
 
     programs = {
       kitty = {
@@ -37,6 +46,10 @@ in {
 
       windowManager.bspwm = {
         enable = true;
+
+        rules = {
+         "flameshot".state = "fullscreen";
+        };
 
         startupPrograms = [
           "pgrep -x sxhkd || sxhkd"
@@ -76,12 +89,26 @@ in {
         '';
       };
 
+      flameshot = {
+        enable = true;
+        settings.General = {
+          useX11LegacyScreenshot = true;
+          captureActiveMonitor = true;
+        };
+      };
+
       sxhkd = {
         enable = true;
 
         keybindings = {
           # Session Management
           "alt + super + {q,r}" = "bspc {quit,wm -r}";
+          "XF86Audio{Raise,Lower}Volume" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%{+,-}";
+          "XF86AudioMute" = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "alt + super + {Up,Down}" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%{+,-}";
+          "Print" = "screenshot select";
+          "alt + Print" = "screenshot full";
+          "alt + shift + Print" = "screenshot delayed";
 
           # Application Shortcuts
           "alt + Return" = "kitty";
