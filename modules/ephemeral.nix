@@ -42,6 +42,7 @@
           directories = [
             ".var/wine"
             ".config/home-manager"
+            ".local/share/Steam"
             "Desktop"
             "Documents"
             "Downloads"
