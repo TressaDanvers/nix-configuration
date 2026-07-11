@@ -7,6 +7,9 @@
       directories = [
         ".cache/rbw"
 
+        ".config/VirtualBox"
+        ".local/share/VirtualBoxVMs"
+
         ".local/opt"
 
         ".config/discord"
