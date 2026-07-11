@@ -10,6 +10,8 @@
         ".config/discord"
 
         ".config/librewolf"
+        ".config/qutebrowser/bookmarks"
+        ".local/share/qutebrowser"
 
         ".config/godot"
         ".local/share/godot"
