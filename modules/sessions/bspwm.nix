@@ -6,6 +6,7 @@
       xserver = {
         enable = true;
         windowManager.bspwm.enable = true;
+        excludePackages = with pkgs; [ xterm ];
       };
 
       displayManager.ly = {
