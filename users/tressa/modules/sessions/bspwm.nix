@@ -119,7 +119,7 @@ in {
           # Application Shortcuts
           "alt + Return" = "kitty";
           "alt + space" = "vicinae open";
-          "alt + w" = "librewolf";
+          "alt + w" = "qutebrowser";
 
           # Window Management
           "alt + m" = "bspc desktop -l next";
