@@ -9,6 +9,15 @@
         terminal = false;
         categories = [ "Game" ];
       };
+
+      rivals = {
+        name = "Marvel Rivals";
+        exec = "steam steam://rungameid/2767030";
+        icon = ../resources/icons/Rivals.ico;
+        type = "Application";
+        terminal = false;
+        categories = [ "Game" ];
+      };
     };
   };
 }
