@@ -16,6 +16,13 @@
       fsType = "none";
       options = [ "bind" ];
     };
+
+    "/state/home/tressa/.local/share/Steam" = {
+      depends = [ "/state" "/mnt/data" ];
+      device = "/mnt/data/home/tressa/.local/opt/steam-home/.steam/debian-installation";
+      fsType = "none";
+      options = [ "bind" ];
+    };
   };
 
   disko.devices.nodev = {
