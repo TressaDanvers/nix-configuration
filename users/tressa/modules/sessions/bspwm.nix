@@ -30,35 +30,41 @@ in {
       };
     };
 
-    xsession.windowManager.bspwm = {
-      enable = true;
-
-      startupPrograms = [
-        "pgrep -x sxhkd || sxhkd"
-        "pgrep -x picom || picom"
-      ];
-
-      monitors = {
-        DP-3 = [ "primary" "hidden" ];
-        HDMI-1 = [ "secondary" ];
-      };
-
-      settings = {
-        border_width = 2;
-        window_gap = 12;
-        split_ratio = 0.5;
-
-        borderless_monocle = true;
-        gapless_monocle = true;
-
-        pointer_modifier = "mod1";
-        focus_follows_pointer = true;
-      };
-
-      extraConfig = ''
-        numlockx on
-        feh --bg-scale ~/.config/home-manager/users/tressa/wallpaper-dark.jpg
+    xsession = {
+      initExtra = ''
+        systemctl --user import-environment WINEPREFIX PROTONPATH
       '';
+
+      windowManager.bspwm = {
+        enable = true;
+
+        startupPrograms = [
+          "pgrep -x sxhkd || sxhkd"
+          "pgrep -x picom || picom"
+        ];
+
+        monitors = {
+          DP-3 = [ "primary" "hidden" ];
+          HDMI-1 = [ "secondary" ];
+        };
+
+        settings = {
+          border_width = 2;
+          window_gap = 12;
+          split_ratio = 0.5;
+
+          borderless_monocle = true;
+          gapless_monocle = true;
+
+          pointer_modifier = "mod1";
+          focus_follows_pointer = true;
+        };
+
+        extraConfig = ''
+          numlockx on
+          feh --bg-scale ~/.config/home-manager/users/tressa/wallpaper-dark.jpg
+        '';
+      };
     };
 
     services = {
