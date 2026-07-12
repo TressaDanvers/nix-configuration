@@ -76,14 +76,18 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "path": "./packages/ge-proton-flake",
-        "type": "path"
+        "lastModified": 1783870080,
+        "narHash": "sha256-GgxnYFwsXsl1VAJfltLHoqcOOQAnZyGR1aD8tzA1pG4=",
+        "owner": "TressaDanvers",
+        "repo": "ge-proton-flake",
+        "rev": "52f7f57e312be60781e501c12a5ca16cdb4d2e61",
+        "type": "github"
       },
       "original": {
-        "path": "./packages/ge-proton-flake",
-        "type": "path"
-      },
-      "parent": []
+        "owner": "TressaDanvers",
+        "repo": "ge-proton-flake",
+        "type": "github"
+      }
     },
     "home-manager": {
       "inputs": {
