@@ -1,5 +1,5 @@
 { inputs, lib, pkgs, ... }: let
-  ge-proton = inputs.ge-proton-flake.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  ge-proton = inputs.ge-proton.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   environment = {
     systemPackages = [ ge-proton ];

@@ -8,8 +8,8 @@
     home-manager.url = "github:nix-community/home-manager";
     nixcord.url = "github:4evy/nixcord";
 
-    ge-proton-flake.url = "github:TressaDanvers/ge-proton-flake";
     tamper-scripts.url = "github:TressaDanvers/tamper-scripts";
+    ge-proton.url = "github:TressaDanvers/ge-proton";
 
     disko.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";

@@ -1,5 +1,5 @@
 { inputs, config, host, lib, pkgs, ... }: let
-  ge-proton = inputs.ge-proton-flake.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  ge-proton = inputs.ge-proton.packages.${pkgs.stdenv.hostPlatform.system}.default;
   standard-opacity = 0.35; 
 in {
   config = lib.optionalAttrs (host.session == "bspwm") {
