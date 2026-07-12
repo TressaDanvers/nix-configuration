@@ -10,9 +10,13 @@
 
     ge-proton-flake.url = "./packages/ge-proton-flake";
 
+    tamper-scripts.url = "github:TressaDanvers/tamper-scripts";
+
     disko.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    tamper-scripts.flake = false;
   };
 
   outputs = inputs: {

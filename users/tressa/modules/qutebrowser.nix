@@ -1,4 +1,4 @@
-{ config, host, lib, pkgs, ... }: {
+{ inputs, config, host, lib, pkgs, ... }: {
   config = lib.optionalAttrs (host.session == "bspwm") {
     programs.qutebrowser = {
       enable = true;
@@ -19,33 +19,10 @@
         };
       };
 
-      greasemonkey = with pkgs; [
-        (fetchurl {
-          url = "https://raw.githubusercontent.com/TressaDanvers/youtube-adb/refs/heads/main/index.user.js";
-          sha256 = "sha256-HJacrbNhHOSIvkU4BJE30B26PSjiHO5mplfLjAd6RjM=";
-        })
-        (writeText "no-shorts.js" ''
-           // ==UserScript==
-           // @name Youtube Shorts Redirect
-           // @match *://www.youtube.com/*
-           // @run-at document-start
-           // ==/UserScript==
-           //*/
-
-           function redirect() {
-             const url = new URL(window.location.href);
-             const match = url.pathname.match(/^\/shorts\/([^/]+)/);
-             if (match) {
-               url.pathname = '/watch';
-               url.searchParams.set('v', match[1]);
-               window.location.replace(url.href);
-             }
-           }
-
-           redirect();
-           document.addEventListener('yt-navigate-finish', redirect);
-        '')
-      ];
+      greasemonkey =
+        map (name: pkgs.runCommandLocal name {} ''
+          cp -r ${inputs.tamper-scripts + "/${name}"} $out
+        '') (builtins.attrNames (builtins.readDir inputs.tamper-scripts));
     };
   };
 }

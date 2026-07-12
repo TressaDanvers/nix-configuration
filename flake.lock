@@ -228,7 +228,8 @@
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs_3",
         "preservation": "preservation",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "tamper-scripts": "tamper-scripts"
       }
     },
     "sops-nix": {
@@ -263,6 +264,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tamper-scripts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783868810,
+        "narHash": "sha256-6GIe4Ag2UWZsGOvnIA+Dkfa9OItfdJ8G9axAdFM7qhI=",
+        "owner": "TressaDanvers",
+        "repo": "tamper-scripts",
+        "rev": "2f5c5999c1d347840a9b3bef35792b68157f3a2b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "TressaDanvers",
+        "repo": "tamper-scripts",
         "type": "github"
       }
     }
