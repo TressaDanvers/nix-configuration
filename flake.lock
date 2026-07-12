@@ -70,7 +70,25 @@
         "type": "github"
       }
     },
-    "ge-proton-flake": {
+    "flake-utils_2": {
+      "inputs": {
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "ge-proton": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs"
@@ -79,13 +97,13 @@
         "lastModified": 1783870080,
         "narHash": "sha256-GgxnYFwsXsl1VAJfltLHoqcOOQAnZyGR1aD8tzA1pG4=",
         "owner": "TressaDanvers",
-        "repo": "ge-proton-flake",
+        "repo": "ge-proton",
         "rev": "52f7f57e312be60781e501c12a5ca16cdb4d2e61",
         "type": "github"
       },
       "original": {
         "owner": "TressaDanvers",
-        "repo": "ge-proton-flake",
+        "repo": "ge-proton",
         "type": "github"
       }
     },
@@ -209,6 +227,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1783776592,
+        "narHash": "sha256-UgCQzxeWI75XM8G+hPrPh+MKzEPjG3SpAj7dtqSbksA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e7a3ca8092b61ff85b6a45bf863ea2b2d6a661b3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "preservation": {
       "locked": {
         "lastModified": 1757436102,
@@ -227,13 +261,13 @@
     "root": {
       "inputs": {
         "disko": "disko",
-        "ge-proton-flake": "ge-proton-flake",
+        "ge-proton": "ge-proton",
         "home-manager": "home-manager",
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs_3",
         "preservation": "preservation",
         "sops-nix": "sops-nix",
-        "tamper-scripts": "tamper-scripts"
+        "userscripts": "userscripts"
       }
     },
     "sops-nix": {
@@ -271,19 +305,37 @@
         "type": "github"
       }
     },
-    "tamper-scripts": {
-      "flake": false,
+    "systems_2": {
       "locked": {
-        "lastModified": 1783868810,
-        "narHash": "sha256-6GIe4Ag2UWZsGOvnIA+Dkfa9OItfdJ8G9axAdFM7qhI=",
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "userscripts": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1783878531,
+        "narHash": "sha256-ms4z5JVldoYS1rjloQspQWS+bHWLjasscMxYd3WBTSU=",
         "owner": "TressaDanvers",
-        "repo": "tamper-scripts",
-        "rev": "2f5c5999c1d347840a9b3bef35792b68157f3a2b",
+        "repo": "userscripts",
+        "rev": "59e1597deae239b3f51926b8814959829c087b82",
         "type": "github"
       },
       "original": {
         "owner": "TressaDanvers",
-        "repo": "tamper-scripts",
+        "repo": "userscripts",
         "type": "github"
       }
     }
