@@ -19,10 +19,7 @@
         };
       };
 
-      greasemonkey =
-        map (name: pkgs.runCommandLocal name {} ''
-          cp -r ${inputs.tamper-scripts + "/${name}"} $out
-        '') (builtins.attrNames (builtins.readDir inputs.tamper-scripts));
+      greasemonkey = lib.attrValues (lib.removeAttrs inputs.userscripts.packages.${pkgs.stdenv.hostPlatform.system} ["default"]);
     };
   };
 }

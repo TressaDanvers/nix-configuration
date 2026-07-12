@@ -8,14 +8,12 @@
     home-manager.url = "github:nix-community/home-manager";
     nixcord.url = "github:4evy/nixcord";
 
-    tamper-scripts.url = "github:TressaDanvers/tamper-scripts";
     ge-proton.url = "github:TressaDanvers/ge-proton";
+    userscripts.url = "github:TressaDanvers/userscripts";
 
     disko.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    tamper-scripts.flake = false;
   };
 
   outputs = inputs: {
