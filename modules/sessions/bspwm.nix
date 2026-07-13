@@ -13,6 +13,11 @@
         enable = true;
         x11Support = true;
       };
+
+      mullvad-vpn = {
+        enable = true;
+        enableExcludeWrapper = true;
+      };
     };
   };
 }
