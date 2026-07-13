@@ -24,6 +24,8 @@
     gh.enable = true;
   };
 
+  home.packages = with pkgs; [ godot blender ];
+
   sops = {
     secrets = {
       ghtoken = {};

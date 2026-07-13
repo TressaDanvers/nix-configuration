@@ -19,6 +19,14 @@ in {
       numlockx
     ];
 
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "x-scheme-handler/http" = [ "org.qutebrowser.qutebrowser.desktop" ];
+        "x-scheme-handler/https" = [ "org.qutebrowser.qutebrowser.desktop" ];
+      };
+    };
+
     programs = {
       kitty = {
         enable = true;
