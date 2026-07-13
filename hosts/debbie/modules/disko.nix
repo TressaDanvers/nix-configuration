@@ -10,6 +10,11 @@
       fsType = "ext4";
     };
 
+    "/mnt/debian" = {
+      device = "/dev/debian-vg/root";
+      fsType = "ext4";
+    };
+
     "/opt" = {
       depends = [ "/mnt/data" ];
       device = "/mnt/data/opt";
