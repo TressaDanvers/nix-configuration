@@ -17,6 +17,7 @@ in {
         exec ${pkgs.gamescope}/bin/gamescope "$@"
       '')
       numlockx
+      pavucontrol
     ];
 
     xdg.mimeApps = {
