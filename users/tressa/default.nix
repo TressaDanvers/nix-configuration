@@ -20,6 +20,8 @@
 
         ".config/godot"
         ".local/share/godot"
+
+        ".local/share/factorio"
       ];
     };
   };

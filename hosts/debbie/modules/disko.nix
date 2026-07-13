@@ -36,6 +36,13 @@
       options = [ "bind" ];
     };
 
+    "/state/home/tressa/.local/share/factorio" = {
+      depends = [ "/state" "/mnt/debian" ];
+      device = "/mnt/debian/home/tressa/.local/share/factorio";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+
     "/state/home/tressa/.local/share/VirtualBoxVMs" = {
       depends = [ "/state" "/mnt/data" ];
       device = "/mnt/data/home/tressa/.local/share/virtualbox";
