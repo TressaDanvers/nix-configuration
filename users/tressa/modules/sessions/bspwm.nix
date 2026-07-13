@@ -37,6 +37,8 @@ in {
 
       feh.enable = true;
 
+      zathura.enable = true;
+
       vicinae = {
         enable = true;
         systemd.enable = true;
