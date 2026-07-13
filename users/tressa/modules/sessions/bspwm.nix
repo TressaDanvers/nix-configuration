@@ -37,6 +37,10 @@ in {
         };
       };
 
+      mullvad-vpn = {
+        enable = true;
+      };
+
       feh.enable = true;
 
       zathura.enable = true;
