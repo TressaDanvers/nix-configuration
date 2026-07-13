@@ -24,6 +24,8 @@ in {
       defaultApplications = {
         "x-scheme-handler/http" = [ "org.qutebrowser.qutebrowser.desktop" ];
         "x-scheme-handler/https" = [ "org.qutebrowser.qutebrowser.desktop" ];
+        "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
+        "application/epub+zip" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
       };
     };
 
