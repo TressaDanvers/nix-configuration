@@ -3,22 +3,32 @@
   standard-opacity = 0.35; 
 in {
   config = lib.optionalAttrs (host.session == "bspwm") {
-    home.packages = with pkgs; [
-      (writeShellScriptBin "screenshot" ''
-        case "$1" in
-          select) flameshot gui ;;
-          full) flameshot screen -p ~/Pictures/Screenshots/Snips/ ;;
-          delayed) flameshot gui -n 2 ;;
-        esac
-      '')
-      (pkgs.writeShellScriptBin "gamescope" ''
-        export WINEPREFIX='${config.home.homeDirectory}/.var/wine'
-        export PROTONPATH='${ge-proton}'
-        exec ${pkgs.gamescope}/bin/gamescope "$@"
-      '')
-      numlockx
-      pavucontrol
-    ];
+    home = {
+      packages = with pkgs; [
+        (writeShellScriptBin "screenshot" ''
+          case "$1" in
+            select) flameshot gui ;;
+            full) flameshot screen -p ~/Pictures/Screenshots/Snips/ ;;
+            delayed) flameshot gui -n 2 ;;
+          esac
+        '')
+        (pkgs.writeShellScriptBin "gamescope" ''
+          export WINEPREFIX='${config.home.homeDirectory}/.var/wine'
+          export PROTONPATH='${ge-proton}'
+          exec ${pkgs.gamescope}/bin/gamescope "$@"
+        '')
+        numlockx
+        pavucontrol
+      ];
+
+      pointerCursor = {
+        enable = true;
+        name = "Bibata-Modern-Ice";
+        package = with pkgs; bibata-cursors;
+        size = 24;
+        x11.enable = true;
+      };
+    };
 
     xdg.mimeApps = {
       enable = true;
@@ -75,6 +85,9 @@ in {
         };
 
         startupPrograms = [
+          "xrdb -merge ~/.Xresources"
+          "xsetroot -cursor_name left_ptr"
+
           "pgrep -x sxhkd || sxhkd"
           "pgrep -x picom || picom"
         ];
