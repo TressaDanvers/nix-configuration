@@ -27,6 +27,7 @@ in {
         pavucontrol
         xfce4-panel
         xfce4-whiskermenu-plugin
+        nemo
       ];
 
       pointerCursor = {
@@ -110,9 +111,11 @@ in {
         startupPrograms = [
           "xrdb -merge ~/.Xresources"
           "xsetroot -cursor_name left_ptr"
+          "numlockx on"
 
           "pgrep -x sxhkd || sxhkd"
           "pgrep -x picom || picom"
+          "pgrep -x xfce4-panel || xfce4-panel"
         ];
 
         monitors = {
@@ -133,7 +136,6 @@ in {
         };
 
         extraConfig = ''
-          numlockx on
           WALLPAPERID="$(cat "$HOME"/.config/wallpaperid)"
 
           if [ "$WALLPAPERID" = "" ]; then
@@ -144,9 +146,6 @@ in {
           fi
 
           bspc config -m DP-3 top_padding ${toString panel-height}
-
-          pkill xfce4-panel
-          xfce4-panel &
         '';
       };
     };
