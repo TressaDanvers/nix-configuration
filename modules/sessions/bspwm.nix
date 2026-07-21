@@ -19,6 +19,8 @@
         excludePackages = with pkgs; [ xterm ];
       };
 
+      blueman.enable = true;
+
       dbus.enable = true;
 
       displayManager.ly = {

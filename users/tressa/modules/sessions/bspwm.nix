@@ -1,8 +1,8 @@
 { inputs, config, host, lib, pkgs, ... }: let
   ge-proton = inputs.ge-proton.packages.${pkgs.stdenv.hostPlatform.system}.default;
   standard-opacity = 0.35;
-  panel-height = 28;
-  panel-icons = 18;
+  panel-height = 20;
+  panel-icons = 14;
 in {
   config = lib.optionalAttrs (host.session == "bspwm") {
     home = {
@@ -26,8 +26,8 @@ in {
         numlockx
         pavucontrol
         xfce4-panel
-        xfce4-whiskermenu-plugin
-        nemo
+        adwaita-icon-theme
+        morewaita-icon-theme
       ];
 
       pointerCursor = {
@@ -43,8 +43,8 @@ in {
       gtk-attrs = {
         enable = true;
         iconTheme = {
-          name = "Moka";
-          package = with pkgs; moka-icon-theme;
+          name = "MoreWaita";
+          package = with pkgs; morewaita-icon-theme;
         };
         theme = {
           name = "Jasper-Dark";
@@ -55,6 +55,12 @@ in {
       gtk2 = gtk-attrs;
       gtk3 = gtk-attrs;
       gtk4 = gtk-attrs;
+    };
+
+    qt = {
+      enable = true;
+      platformTheme.name = "adwaita";
+      style.name = "adwaita-dark";
     };
 
     xdg.mimeApps = {
@@ -87,6 +93,7 @@ in {
         enable = true;
         systemd.enable = true;
         settings = {
+          theme.dark.icon_theme = "MoreWaita";
           launcher_window = {
             opacity = standard-opacity * 2;
             client_side_decorations = {
@@ -171,15 +178,15 @@ in {
         "panels/panel-1/leave-opacity" = 100;
         "panels/panel-1/background-rgba" = [ 0.1 0.1 0.1 (standard-opacity * 2) ];
         "panels/panel-1/background-style" = 1;
-        "panels/panel-1/autohide-behavior" = 1;
-        "panels/panel-1/plugin-ids" = [ 1 2 3 4 5 ];
+        "panels/panel-1/autohide-behavior" = 0;
+        "panels/panel-1/plugin-ids" = [ 1 2 3 4 5 6 ];
 
         # 1: tasks
         "plugins/plugin-1" = "tasklist";
         "plugins/plugin-1/grouping" = false;
         "plugins/plugin-1/flat-buttons" = true;
         "plugins/plugin-1/show-handle" = false;
-        "plugins/plugin-1/show-labels" = true;
+        "plugins/plugin-1/show-labels" = false;
         "plugins/plugin-1/show-tooltips" = false;
         "plugins/plugin-1/window-scrolling" = true;
         "plugins/plugin-1/include-all-workspaces" = true;
@@ -194,6 +201,9 @@ in {
         "plugins/plugin-3/icon-size" = panel-icons;
         "plugins/plugin-3/square-items" = true;
         "plugins/plugin-3/hidden-legacy-items" = [ "mullvad-gui" "flameshot" ];
+        "plugins/plugin-3/known-legacy-items" = [ "mullvad-gui" "flameshot" ];
+        "plugins/plugin-3/known-items" = [ "chrome_status_icon_1" "steam" "flameshot" ];
+        "plugins/plugin-3/hidden-items" = [ "flameshot" ];
         "plugins/plugin-3/hide-new-items" = false;
 
         # 4: gap
@@ -207,13 +217,18 @@ in {
         "plugins/plugin-5/digital-time-format" = "%H:%M";
         "plugins/plugin-5/digital-date-format" = "%Y-%m-%d";
         "plugins/plugin-5/tooltip-format" = "%A %d %B %Y";
+
+        # 6: gap
+        "plugins/plugin-6" = "separator";
+        "plugins/plugin-6/style" = 0;
+        "plugins/plugin-6/expand" = false;
       };
     };
 
     services = {
-      linux-wallpaperengine = {
-        enable = true;
-      };
+      linux-wallpaperengine.enable = true;
+
+      blueman-applet.enable = true;
 
       picom = {
         enable = true;
