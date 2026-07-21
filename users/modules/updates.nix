@@ -65,7 +65,7 @@
         fi
       '';
     });
-  in [ sync-updates upgrade ] ++
+  in [ sync-updates upgrade jujutsu git curl ] ++
     (lib.lists.optionals (host.admin == user.name) [ sync-updates-to-system upgrade-system full-upgrade ]);
 
   xdg.dataFile = lib.mkIf (host.admin == user.name) {

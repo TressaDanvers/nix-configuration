@@ -1,14 +1,16 @@
 { nixpkgs, ... }: {
   host = {
     arch = "x86_64-linux";
-    name = "nixos";
+    name = "bread";
 
     session = "bspwm";
 
     locale = "en_US.UTF-8";
     timeZone = "America/New_York";
 
-    admin = "nixos";
-    users = [ "nixos" ];
+    admin = "tressa";
+    users = [ "tressa" ];
+
+    isEphemeral = true;
   };
 }
