@@ -1,9 +1,15 @@
 { inputs, config, host, lib, pkgs, ... }: let
   ge-proton = inputs.ge-proton.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  standard-opacity = 0.35; 
+  standard-opacity = 0.35;
+  panel-height = 28;
+  panel-icons = 18;
 in {
   config = lib.optionalAttrs (host.session == "bspwm") {
     home = {
+      activation.reloadBspwm = lib.hm.dag.entryAfter [ "xfconfSettings" ] ''
+        $DRY_RUN_CMD ${pkgs.bspwm}/bin/bspc wm -r
+      '';
+
       packages = with pkgs; [
         (writeShellScriptBin "screenshot" ''
           case "$1" in
@@ -19,6 +25,8 @@ in {
         '')
         numlockx
         pavucontrol
+        xfce4-panel
+        xfce4-whiskermenu-plugin
       ];
 
       pointerCursor = {
@@ -96,6 +104,7 @@ in {
 
         rules = {
          "flameshot".state = "fullscreen";
+         "steam_app_431960".state = "floating";
         };
 
         startupPrograms = [
@@ -133,7 +142,67 @@ in {
             pkill linux-wallpaper
             linux-wallpaperengine -r DP-3 -r HDMI-1 -b "$WALLPAPERID" --disable-parallax -s &
           fi
+
+          bspc config -m DP-3 top_padding ${toString panel-height}
+
+          pkill xfce4-panel
+          xfce4-panel &
         '';
+      };
+    };
+
+    xfconf = {
+      enable = true;
+      settings.xfce4-panel = {
+        "configver" = 2;
+        "panels" = [ 1 ];
+        "panels/dark-mode" = true;
+
+        "panels/panel-1/output-name" = "DP-3";
+        "panels/panel-1/position" = "p=6;x=0;y=0";
+        "panels/panel-1/position-locked" = true;
+        "panels/panel-1/length" = 100;
+        "panels/panel-1/size" = panel-height;
+        "panels/panel-1/icon-size" = panel-icons;
+        "panels/panel-1/enter-opacity" = 100;
+        "panels/panel-1/leave-opacity" = 100;
+        "panels/panel-1/background-rgba" = [ 0.1 0.1 0.1 (standard-opacity * 2) ];
+        "panels/panel-1/background-style" = 1;
+        "panels/panel-1/plugin-ids" = [ 1 2 3 4 5 ];
+
+        # 1: tasks
+        "plugins/plugin-1" = "tasklist";
+        "plugins/plugin-1/grouping" = false;
+        "plugins/plugin-1/flat-buttons" = true;
+        "plugins/plugin-1/show-handle" = false;
+        "plugins/plugin-1/show-labels" = true;
+        "plugins/plugin-1/show-tooltips" = false;
+        "plugins/plugin-1/window-scrolling" = true;
+        "plugins/plugin-1/include-all-workspaces" = true;
+
+        # 2: gap
+        "plugins/plugin-2" = "separator";
+        "plugins/plugin-2/style" = 0;
+        "plugins/plugin-2/expand" = true;
+
+        # 3: system tray
+        "plugins/plugin-3" = "systray";
+        "plugins/plugin-3/icon-size" = panel-icons;
+        "plugins/plugin-3/square-items" = true;
+        "plugins/plugin-3/hidden-legacy-items" = [ "mullvad-gui" "flameshot" ];
+        "plugins/plugin-3/hide-new-items" = false;
+
+        # 4: gap
+        "plugins/plugin-4" = "separator";
+        "plugins/plugin-4/style" = 0;
+        "plugins/plugin-4/expand" = false;
+
+        # 5: clock
+        "plugins/plugin-5" = "clock";
+        "plugins/plugin-5/digital-layout" = 2;
+        "plugins/plugin-5/digital-time-format" = "%H:%M";
+        "plugins/plugin-5/digital-date-format" = "%Y-%m-%d";
+        "plugins/plugin-5/tooltip-format" = "%A %d %B %Y";
       };
     };
 
