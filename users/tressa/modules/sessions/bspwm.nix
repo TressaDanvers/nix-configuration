@@ -111,12 +111,22 @@ in {
 
         extraConfig = ''
           numlockx on
-          feh --bg-scale --nofehbg ~/.config/home-manager/users/tressa/wallpaper-dark.jpg
+          WALLPAPERID="$(cat "$HOME"/.config/wallpaperid)"
+          if [ "$WALLPAPERID" = "" ]; then
+            feh --bg-scale --nofehbg ~/.config/home-manager/users/tressa/wallpaper-dark.jpg
+          else
+            pkill linux-wallpaper
+            linux-wallpaperengine -r DP-3 -r HDMI-1 -b "$WALLPAPERID" --disable-parallax -s &
+          fi
         '';
       };
     };
 
     services = {
+      linux-wallpaperengine = {
+        enable = true;
+      };
+
       picom = {
         enable = true;
         backend = "glx";

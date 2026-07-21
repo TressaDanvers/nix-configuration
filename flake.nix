@@ -4,7 +4,6 @@
     disko.url = "github:nix-community/disko";
     preservation.url = "github:nix-community/preservation";
     sops-nix.url = "github:mic92/sops-nix";
-
     home-manager.url = "github:nix-community/home-manager";
     nixcord.url = "github:4evy/nixcord";
 

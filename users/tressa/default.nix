@@ -3,7 +3,10 @@
     name = "tressa";
     desc = "Tressa Danvers";
     state = {
-      files = [];
+      files = [
+        ".config/wallpaperid"
+      ];
+
       directories = [
         ".cache/rbw"
 
