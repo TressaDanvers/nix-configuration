@@ -144,6 +144,7 @@ in {
           "100:window_type = 'dropdown_menu'"
           "100:window_type = 'utility'"
           "100:WM_CLASS = 'factorio'"
+          "100:WM_CLASS = 'steam_app_431960'"
         ];
 
         extraConfig = ''
@@ -152,7 +153,8 @@ in {
             "_NET_WM_OPAQUE_REGION@:c",
             "window_type = 'popup_menu'",
             "window_type = 'dropdown_menu'",
-            "window_type = 'utility'"
+            "window_type = 'utility'",
+            "WM_CLASS = 'steam_app_431960'"
           ];
         '';
       };
