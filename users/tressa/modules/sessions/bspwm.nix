@@ -46,6 +46,10 @@ in {
           name = "Moka";
           package = with pkgs; moka-icon-theme;
         };
+        theme = {
+          name = "Jasper-Dark";
+          package = with pkgs; jasper-gtk-theme;
+        };
       };
     in gtk-attrs // {
       gtk2 = gtk-attrs;
@@ -167,6 +171,7 @@ in {
         "panels/panel-1/leave-opacity" = 100;
         "panels/panel-1/background-rgba" = [ 0.1 0.1 0.1 (standard-opacity * 2) ];
         "panels/panel-1/background-style" = 1;
+        "panels/panel-1/autohide-behavior" = 1;
         "panels/panel-1/plugin-ids" = [ 1 2 3 4 5 ];
 
         # 1: tasks
