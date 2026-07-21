@@ -130,8 +130,30 @@ in {
       picom = {
         enable = true;
         backend = "glx";
+
+        fade = true;
+        fadeDelta = 5;
+
+        activeOpacity = 0.98;
+        inactiveOpacity = 0.95;
+
+        opacityRules = [
+          "100:_NET_WM_STATE@ *= '_NET_WM_STATE_FULLSCREEN'"
+          "100:_NET_WM_OPAQUE_REGION@:c"
+          "100:window_type = 'popup_menu'"
+          "100:window_type = 'dropdown_menu'"
+          "100:window_type = 'utility'"
+          "100:WM_CLASS = 'factorio'"
+        ];
+
         extraConfig = ''
           transparent-clipping = true;
+          transparent-clipping-exclude = [
+            "_NET_WM_OPAQUE_REGION@:c",
+            "window_type = 'popup_menu'",
+            "window_type = 'dropdown_menu'",
+            "window_type = 'utility'"
+          ];
         '';
       };
 
