@@ -4,6 +4,15 @@ inputs@{ host, lib, pkgs, config, ... }: {
   nixpkgs.hostPlatform = host.arch;
   networking.hostName = host.name;
 
+  fileSystems."/c" = let
+    primaryUserConfig = "/home/${host.admin}/.config/home-manager";
+  in {
+    depends = [ primaryUserConfig ];
+    device = primaryUserConfig;
+    fsType = "none";
+    options = [ "bind" ];
+  };
+
   users.users = lib.attrsets.genAttrs host.users (path: let
     user = (import ../users/${path} inputs).user;
   in {
