@@ -30,6 +30,20 @@ in {
       };
     };
 
+    gtk = let
+      gtk-attrs = {
+        enable = true;
+        iconTheme = {
+          name = "Moka";
+          package = with pkgs; moka-icon-theme;
+        };
+      };
+    in gtk-attrs // {
+      gtk2 = gtk-attrs;
+      gtk3 = gtk-attrs;
+      gtk4 = gtk-attrs;
+    };
+
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
@@ -112,6 +126,7 @@ in {
         extraConfig = ''
           numlockx on
           WALLPAPERID="$(cat "$HOME"/.config/wallpaperid)"
+
           if [ "$WALLPAPERID" = "" ]; then
             feh --bg-scale --nofehbg ~/.config/home-manager/users/tressa/wallpaper-dark.jpg
           else

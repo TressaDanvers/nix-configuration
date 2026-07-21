@@ -7,12 +7,18 @@
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
 
+    programs = {
+      dconf.enable = true;
+    };
+
     services = {
       xserver = {
         enable = true;
         windowManager.bspwm.enable = true;
         excludePackages = with pkgs; [ xterm ];
       };
+
+      dbus.enable = true;
 
       displayManager.ly = {
         enable = true;
