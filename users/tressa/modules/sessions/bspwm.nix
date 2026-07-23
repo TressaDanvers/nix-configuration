@@ -127,6 +127,7 @@ in {
           "pgrep -x sxhkd || sxhkd"
           "pgrep -x picom || picom"
           "pgrep -x xfce4-panel || xfce4-panel"
+          "pgrep -x dunst || ${pkgs.dunst}/bin/dunst"
         ];
 
         monitors = {
@@ -157,6 +158,10 @@ in {
           fi
 
           bspc config -m DP-3 top_padding ${toString panel-height}
+
+          ${pkgs.xorg.xset}/bin/xset -dpms
+          ${pkgs.xorg.xset}/bin/xset s off
+          ${pkgs.xorg.xset}/bin/xset s noblank
         '';
       };
     };
