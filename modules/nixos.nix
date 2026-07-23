@@ -4,13 +4,21 @@ inputs@{ host, lib, pkgs, config, ... }: {
   nixpkgs.hostPlatform = host.arch;
   networking.hostName = host.name;
 
-  fileSystems."/c" = let
-    primaryUserConfig = "/home/${host.admin}/.config/home-manager";
+  fileSystems = let
+    primaryUserHome = "/home/${host.admin}";
   in {
-    depends = [ primaryUserConfig ];
-    device = primaryUserConfig;
-    fsType = "none";
-    options = [ "bind" ];
+    "/c" = {
+      depends = [ "${primaryUserHome}/.config/home-manager" ];
+      device = "${primaryUserHome}/.config/home-manager";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+    "/s" = {
+      depends = [ "${primaryUserHome}/.local/share/Steam/steamapps" ];
+      device = "${primaryUserHome}/.local/share/Steam/steamapps";
+      fsType = "none";
+      options = [ "bind" ];
+    };
   };
 
   users.users = lib.attrsets.genAttrs host.users (path: let
