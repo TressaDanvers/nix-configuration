@@ -23,10 +23,11 @@
         ".config/qutebrowser/bookmarks"
         ".local/share/qutebrowser"
 
+        ".local/share/factorio"
+
         ".config/godot"
         ".local/share/godot"
 
-        ".local/share/factorio"
       ];
     };
   };
