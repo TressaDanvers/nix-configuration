@@ -17,6 +17,8 @@
 
         ".config/discord"
 
+        ".config/neocities"
+
         ".config/librewolf"
         ".config/qutebrowser/bookmarks"
         ".local/share/qutebrowser"
