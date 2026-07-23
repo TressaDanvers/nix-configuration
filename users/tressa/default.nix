@@ -28,6 +28,8 @@
         ".config/godot"
         ".local/share/godot"
 
+        ".config/JetBrains"
+        ".local/share/JetBrains"
       ];
     };
   };

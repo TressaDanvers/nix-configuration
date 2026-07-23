@@ -24,7 +24,7 @@
     gh.enable = true;
   };
 
-  home.packages = with pkgs; [ godot blender ];
+  home.packages = with pkgs; [ godot blender jetbrains.idea-oss aseprite ];
 
   sops = {
     secrets = {
